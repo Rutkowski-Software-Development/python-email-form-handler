@@ -37,3 +37,8 @@ Minimal Python script to validate form input, send email via SMTP, and log succe
    git clone git@github.com:Rutkowski-Software-Development/python-email-form-handler.git
    cd python-email-form-handler
    pip install -r requirements.txt
+
+## Contact
+
+- Website: https://www.codingwithjustin.com 
+- Email: Justin@CodingWithJustin.com
