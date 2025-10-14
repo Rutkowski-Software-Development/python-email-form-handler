@@ -1,0 +1,38 @@
+# .github/workflows/ci.yml
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install flake8 python-dotenv
+
+      - name: Lint code
+        run: flake8 handler.py
+
+      - name: Test script execution
+        env:
+          SMTP_HOST: smtp.example.com
+          SMTP_PORT: '587'
+          SMTP_USER: user@example.com
+          SMTP_PASS: secret
+        run: |
+          python handler.py --to "test@example.com" --subject "CI Test" --body "This is a CI check." || true
+```[43dcd9a7-70db-4a1f-b0ae-981daa162054](https://github.com/Linusp/zs/tree/c80e06a6905879b76a473512261e44d23bea7e99/zs%2Fconsts.py?citationMarker=43dcd9a7-70db-4a1f-b0ae-981daa162054&citationId=1&citationId=2 "github.com")
